@@ -1,0 +1,2075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Velvet Crumb Bakery - Freshly baked treats made with love.">
+  <title>Velvet Crumb Bakery</title>
+
+  <style>
+    /* =========================
+       RESET & GLOBAL STYLES
+    ========================== */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --cream: #fffaf4;
+      --light-cream: #f8eee3;
+      --brown: #4b2e24;
+      --brown-light: #765548;
+      --pink: #d88989;
+      --pink-dark: #b96568;
+      --gold: #d6a85f;
+      --white: #ffffff;
+      --shadow: 0 10px 30px rgba(75, 46, 36, 0.12);
+    }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: var(--cream);
+      color: var(--brown);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1150px, 90%);
+      margin: auto;
+    }
+
+    .section {
+      padding: 100px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title span {
+      color: var(--pink-dark);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2rem, 5vw, 3.3rem);
+      margin: 8px 0 12px;
+    }
+
+    .section-title p {
+      max-width: 600px;
+      margin: auto;
+      color: var(--brown-light);
+    }
+
+    /* =========================
+       NAVBAR
+    ========================== */
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(255, 250, 244, 0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(75, 46, 36, 0.08);
+    }
+
+    nav {
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+      letter-spacing: -1px;
+    }
+
+    .logo span {
+      color: var(--pink-dark);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--pink-dark);
+    }
+
+    .order-nav {
+      background: var(--brown);
+      color: white !important;
+      padding: 10px 18px;
+      border-radius: 30px;
+    }
+
+    .order-nav:hover {
+      background: var(--pink-dark);
+    }
+
+    .menu-btn {
+      display: none;
+      border: none;
+      background: transparent;
+      font-size: 27px;
+      color: var(--brown);
+    }
+
+    /* =========================
+       HERO
+    ========================== */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 78px;
+      background:
+        linear-gradient(90deg, rgba(255,250,244,.98) 0%, rgba(255,250,244,.86) 45%, rgba(255,250,244,.18) 100%),
+        url("https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1800&q=85")
+        center/cover;
+    }
+
+    .hero-content {
+      max-width: 650px;
+    }
+
+    .eyebrow {
+      color: var(--pink-dark);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 8vw, 6.2rem);
+      line-height: .95;
+      letter-spacing: -4px;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 span {
+      color: var(--pink-dark);
+    }
+
+    .hero p {
+      max-width: 530px;
+      font-size: 18px;
+      color: var(--brown-light);
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 13px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border: none;
+      padding: 14px 24px;
+      border-radius: 30px;
+      font-weight: bold;
+      transition: .3s;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: var(--brown);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--pink-dark);
+      transform: translateY(-3px);
+    }
+
+    .btn-outline {
+      border: 1px solid var(--brown);
+      background: transparent;
+      color: var(--brown);
+    }
+
+    .btn-outline:hover {
+      background: var(--brown);
+      color: white;
+    }
+
+    /* =========================
+       ABOUT
+    ========================== */
+
+    .about {
+      background: var(--white);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .about-image {
+      position: relative;
+    }
+
+    .about-image img {
+      height: 550px;
+      object-fit: cover;
+      border-radius: 180px 180px 20px 20px;
+    }
+
+    .experience {
+      position: absolute;
+      bottom: 25px;
+      right: -25px;
+      background: var(--brown);
+      color: white;
+      padding: 22px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .experience strong {
+      display: block;
+      font-size: 30px;
+      color: #f1c985;
+    }
+
+    .about-text h2 {
+      font-size: 45px;
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+
+    .about-text p {
+      color: var(--brown-light);
+      margin-bottom: 18px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    .feature {
+      padding: 18px;
+      background: var(--light-cream);
+      border-radius: 12px;
+    }
+
+    .feature strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .feature span {
+      font-size: 13px;
+      color: var(--brown-light);
+    }
+
+    /* =========================
+       MENU
+    ========================== */
+
+    .filters {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 35px;
+    }
+
+    .filter {
+      border: 1px solid #ddcfc2;
+      background: white;
+      padding: 9px 18px;
+      border-radius: 30px;
+      color: var(--brown);
+    }
+
+    .filter.active,
+    .filter:hover {
+      background: var(--brown);
+      color: white;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .menu-card {
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: .35s;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .menu-card.hidden {
+      display: none;
+    }
+
+    .menu-image {
+      height: 240px;
+      object-fit: cover;
+    }
+
+    .menu-info {
+      padding: 20px;
+    }
+
+    .menu-info h3 {
+      font-size: 22px;
+      margin-bottom: 5px;
+    }
+
+    .menu-info p {
+      color: var(--brown-light);
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    .menu-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .price {
+      font-size: 20px;
+      font-weight: bold;
+      color: var(--pink-dark);
+    }
+
+    .add-btn {
+      border: none;
+      background: var(--light-cream);
+      color: var(--brown);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      font-size: 20px;
+      transition: .3s;
+    }
+
+    .add-btn:hover {
+      background: var(--brown);
+      color: white;
+    }
+
+    /* =========================
+       SPECIAL BANNER
+    ========================== */
+
+    .special {
+      padding: 80px 0;
+      background: var(--brown);
+      color: white;
+    }
+
+    .special-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .special h2 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1;
+      margin-bottom: 15px;
+    }
+
+    .special p {
+      color: #e7d8ce;
+      max-width: 550px;
+    }
+
+    .special .btn {
+      background: #f1c985;
+      color: var(--brown);
+      white-space: nowrap;
+    }
+
+    /* =========================
+       GALLERY
+    ========================== */
+
+    .gallery {
+      background: var(--white);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr .8fr;
+      grid-template-rows: 250px 250px;
+      gap: 15px;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 15px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .gallery-item:first-child {
+      grid-row: span 2;
+    }
+
+    .gallery-item img {
+      height: 100%;
+      object-fit: cover;
+      transition: .5s;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.08);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(75,46,36,.4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      opacity: 0;
+      transition: .3s;
+      font-size: 25px;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    /* =========================
+       TESTIMONIALS
+    ========================== */
+
+    .testimonials {
+      background: var(--light-cream);
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .testimonial {
+      background: white;
+      padding: 30px;
+      border-radius: 18px;
+      box-shadow: 0 5px 20px rgba(75,46,36,.06);
+    }
+
+    .stars {
+      color: #d49d42;
+      margin-bottom: 15px;
+      letter-spacing: 3px;
+    }
+
+    .testimonial p {
+      color: var(--brown-light);
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+
+    .customer {
+      font-weight: bold;
+    }
+
+    /* =========================
+       CONTACT
+    ========================== */
+
+    .contact {
+      background: var(--white);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .contact-info h2 {
+      font-size: 45px;
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+
+    .contact-info > p {
+      color: var(--brown-light);
+      margin-bottom: 30px;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 20px;
+      align-items: center;
+    }
+
+    .contact-icon {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: var(--light-cream);
+      display: grid;
+      place-items: center;
+      font-size: 20px;
+    }
+
+    .contact-item small {
+      display: block;
+      color: #987c6f;
+    }
+
+    .contact-form {
+      background: var(--light-cream);
+      padding: 35px;
+      border-radius: 20px;
+    }
+
+    .contact-form h3 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      border: 1px solid #ddcfc2;
+      background: white;
+      padding: 13px 15px;
+      border-radius: 9px;
+      outline: none;
+      font-family: inherit;
+      color: var(--brown);
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: var(--pink-dark);
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    footer {
+      background: #35221b;
+      color: white;
+      padding: 50px 0 25px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 35px;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+
+    .footer-logo {
+      font-size: 25px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .footer-logo span {
+      color: #e4a0a0;
+    }
+
+    footer p {
+      color: #cdbcb4;
+      font-size: 14px;
+    }
+
+    footer h4 {
+      margin-bottom: 15px;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 8px;
+      color: #cdbcb4;
+      font-size: 14px;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 25px;
+      color: #a99289;
+      font-size: 13px;
+    }
+
+    /* =========================
+       MODALS
+    ========================== */
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(30,18,14,.7);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      padding: 20px;
+    }
+
+    .modal.show {
+      display: flex;
+    }
+
+    .modal-box {
+      background: white;
+      width: min(500px, 100%);
+      padding: 35px;
+      border-radius: 20px;
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .close-modal {
+      position: absolute;
+      right: 18px;
+      top: 15px;
+      border: none;
+      background: transparent;
+      font-size: 25px;
+      color: var(--brown);
+    }
+
+    .modal-box h2 {
+      margin-bottom: 10px;
+    }
+
+    .modal-box > p {
+      color: var(--brown-light);
+      margin-bottom: 20px;
+    }
+
+    /* =========================
+       CART
+    ========================== */
+
+    .cart-button {
+      position: fixed;
+      right: 25px;
+      bottom: 25px;
+      width: 58px;
+      height: 58px;
+      border: none;
+      border-radius: 50%;
+      background: var(--pink-dark);
+      color: white;
+      font-size: 22px;
+      z-index: 900;
+      box-shadow: var(--shadow);
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--brown);
+      font-size: 12px;
+      display: grid;
+      place-items: center;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      margin: 20px 0;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    /* =========================
+       TOAST
+    ========================== */
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 30px;
+      transform: translate(-50%, 100px);
+      background: var(--brown);
+      color: white;
+      padding: 13px 22px;
+      border-radius: 30px;
+      z-index: 3000;
+      opacity: 0;
+      transition: .4s;
+    }
+
+    .toast.show {
+      transform: translate(-50%, 0);
+      opacity: 1;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+
+    @media (max-width: 850px) {
+
+      .nav-links {
+        position: absolute;
+        top: 78px;
+        left: 0;
+        width: 100%;
+        background: var(--cream);
+        flex-direction: column;
+        padding: 25px;
+        gap: 20px;
+        display: none;
+        box-shadow: var(--shadow);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .menu-grid,
+      .testimonial-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .special-content {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+
+      .section {
+        padding: 70px 0;
+      }
+
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .about-image img {
+        height: 420px;
+      }
+
+      .experience {
+        right: 10px;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      .menu-grid,
+      .testimonial-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 200px 200px 200px;
+      }
+
+      .gallery-item:first-child {
+        grid-row: span 2;
+      }
+
+      .contact-form {
+        padding: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       NAVIGATION
+  ========================== -->
+
+  <header>
+    <div class="container">
+      <nav>
+
+        <a href="#home" class="logo">
+          Velvet <span>Crumb.</span>
+        </a>
+
+        <button class="menu-btn" id="menuBtn">☰</button>
+
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li>
+            <a href="#" class="order-nav" onclick="openOrder(event)">
+              Order Now
+            </a>
+          </li>
+        </ul>
+
+      </nav>
+    </div>
+  </header>
+
+
+  <!-- =========================
+       HERO
+  ========================== -->
+
+  <section class="hero" id="home">
+
+    <div class="container">
+
+      <div class="hero-content">
+
+        <div class="eyebrow">Artisan Bakery · Since 2018</div>
+
+        <h1>
+          Baked with
+          <span>love.</span>
+        </h1>
+
+        <p>
+          Handcrafted cakes, pastries and sweet little moments
+          made fresh every morning at Velvet Crumb Bakery.
+        </p>
+
+        <div class="hero-buttons">
+
+          <a href="#menu" class="btn btn-primary">
+            Explore Our Menu →
+          </a>
+
+          <a href="#about" class="btn btn-outline">
+            Our Story
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       ABOUT
+  ========================== -->
+
+  <section class="section about" id="about">
+
+    <div class="container">
+
+      <div class="about-grid">
+
+        <div class="about-image">
+
+          <img
+            src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=1000&q=85"
+            alt="Freshly baked pastries"
+          >
+
+          <div class="experience">
+            <strong>8+</strong>
+            Years of baking
+          </div>
+
+        </div>
+
+        <div class="about-text">
+
+          <div class="eyebrow">Our Story</div>
+
+          <h2>
+            Small batches.<br>
+            Big memories.
+          </h2>
+
+          <p>
+            Velvet Crumb started with one oven, a family recipe book
+            and a dream to make really good baked treats.
+          </p>
+
+          <p>
+            Today, everything is still made in small batches using
+            carefully selected ingredients and plenty of love.
+          </p>
+
+          <div class="features">
+
+            <div class="feature">
+              <strong>🥐 Fresh Daily</strong>
+              <span>Baked every morning</span>
+            </div>
+
+            <div class="feature">
+              <strong>🌿 Quality Ingredients</strong>
+              <span>Simple & delicious</span>
+            </div>
+
+            <div class="feature">
+              <strong>🎂 Custom Cakes</strong>
+              <span>Made for your moments</span>
+            </div>
+
+            <div class="feature">
+              <strong>❤️ Made With Love</strong>
+              <span>Always from the heart</span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       MENU
+  ========================== -->
+
+  <section class="section" id="menu">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <span>Our Favourites</span>
+
+        <h2>Something for everyone.</h2>
+
+        <p>
+          From morning pastries to celebration cakes,
+          there's always something fresh waiting for you.
+        </p>
+
+      </div>
+
+
+      <div class="filters">
+
+        <button class="filter active" data-filter="all">
+          All
+        </button>
+
+        <button class="filter" data-filter="cake">
+          Cakes
+        </button>
+
+        <button class="filter" data-filter="pastry">
+          Pastries
+        </button>
+
+        <button class="filter" data-filter="bread">
+          Bread
+        </button>
+
+      </div>
+
+
+      <div class="menu-grid">
+
+        <div class="menu-card" data-category="cake">
+
+          <img
+            class="menu-image"
+            src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=85"
+            alt="Chocolate cake"
+          >
+
+          <div class="menu-info">
+
+            <h3>Velvet Chocolate Cake</h3>
+
+            <p>
+              Rich chocolate sponge with silky chocolate frosting.
+            </p>
+
+            <div class="menu-bottom">
+
+              <span class="price">$32</span>
+
+              <button
+                class="add-btn"
+                onclick="addToCart('Velvet Chocolate Cake', 32)"
+              >
+                +
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="menu-card" data-category="cake">
+
+          <img
+            class="menu-image"
+            src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=800&q=85"
+            alt="Strawberry cake"
+          >
+
+          <div class="menu-info">
+
+            <h3>Strawberry Dream</h3>
+
+            <p>
+              Vanilla sponge, fresh strawberries and cream.
+            </p>
+
+            <div class="menu-bottom">
+
+              <span class="price">$29</span>
+
+              <button
+                class="add-btn"
+                onclick="addToCart('Strawberry Dream', 29)"
+              >
+                +
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="menu-card" data-category="pastry">
+
+          <img
+            class="menu-image"
+            src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=85"
+            alt="Croissants"
+          >
+
+          <div class="menu-info">
+
+            <h3>Butter Croissant</h3>
+
+            <p>
+              Golden, flaky and baked fresh every morning.
+            </p>
+
+            <div class="menu-bottom">
+
+              <span class="price">$4</span>
+
+              <button
+                class="add-btn"
+                onclick="addToCart('Butter Croissant', 4)"
+              >
+                +
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="menu-card" data-category="pastry">
+
+          <img
+            class="menu-image"
+            src="https://images.unsplash.com/photo-1587668178277-295251f900ce?auto=format&fit=crop&w=800&q=85"
+            alt="Cupcakes"
+          >
+
+          <div class="menu-info">
+
+            <h3>Pink Cupcake</h3>
+
+            <p>
+              Soft vanilla cupcake topped with strawberry buttercream.
+            </p>
+
+            <div class="menu-bottom">
+
+              <span class="price">$5</span>
+
+              <button
+                class="add-btn"
+                onclick="addToCart('Pink Cupcake', 5)"
+              >
+                +
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="menu-card" data-category="bread">
+
+          <img
+            class="menu-image"
+            src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=85"
+            alt="Fresh bread"
+          >
+
+          <div class="menu-info">
+
+            <h3>Country Sourdough</h3>
+
+            <p>
+              Naturally fermented with a crisp golden crust.
+            </p>
+
+            <div class="menu-bottom">
+
+              <span class="price">$8</span>
+
+              <button
+                class="add-btn"
+                onclick="addToCart('Country Sourdough', 8)"
+              >
+                +
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="menu-card" data-category="pastry">
+
+          <img
+            class="menu-image"
+            src="https://images.unsplash.com/photo-1612203985729-70726954388c?auto=format&fit=crop&w=800&q=85"
+            alt="Macarons"
+          >
+
+          <div class="menu-info">
+
+            <h3>Macaron Box</h3>
+
+            <p>
+              Six colourful French macarons in assorted flavours.
+            </p>
+
+            <div class="menu-bottom">
+
+              <span class="price">$15</span>
+
+              <button
+                class="add-btn"
+                onclick="addToCart('Macaron Box', 15)"
+              >
+                +
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       SPECIAL OFFER
+  ========================== -->
+
+  <section class="special">
+
+    <div class="container">
+
+      <div class="special-content">
+
+        <div>
+
+          <div class="eyebrow">This Week's Special</div>
+
+          <h2>
+            Strawberry<br>
+            Shortcake.
+          </h2>
+
+          <p>
+            Light vanilla sponge layered with fresh strawberries
+            and clouds of whipped cream.
+          </p>
+
+        </div>
+
+        <button
+          class="btn"
+          onclick="addToCart('Strawberry Shortcake', 36)"
+        >
+          Add to Order — $36
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       GALLERY
+  ========================== -->
+
+  <section class="section gallery" id="gallery">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <span>Behind The Bake</span>
+
+        <h2>A little taste of Velvet Crumb.</h2>
+
+        <p>
+          Take a peek at some of our favourite creations.
+        </p>
+
+      </div>
+
+
+      <div class="gallery-grid">
+
+        <div class="gallery-item" onclick="openImage(this)">
+          <img
+            src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1000&q=85"
+            alt="Chocolate cake"
+          >
+          <div class="gallery-overlay">＋</div>
+        </div>
+
+        <div class="gallery-item" onclick="openImage(this)">
+          <img
+            src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=85"
+            alt="Croissant"
+          >
+          <div class="gallery-overlay">＋</div>
+        </div>
+
+        <div class="gallery-item" onclick="openImage(this)">
+          <img
+            src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=800&q=85"
+            alt="Strawberry dessert"
+          >
+          <div class="gallery-overlay">＋</div>
+        </div>
+
+        <div class="gallery-item" onclick="openImage(this)">
+          <img
+            src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=85"
+            alt="Fresh bread"
+          >
+          <div class="gallery-overlay">＋</div>
+        </div>
+
+        <div class="gallery-item" onclick="openImage(this)">
+          <img
+            src="https://images.unsplash.com/photo-1587668178277-295251f900ce?auto=format&fit=crop&w=800&q=85"
+            alt="Cupcakes"
+          >
+          <div class="gallery-overlay">＋</div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       TESTIMONIALS
+  ========================== -->
+
+  <section class="section testimonials" id="reviews">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <span>Happy Customers</span>
+
+        <h2>Don't just take our word for it.</h2>
+
+      </div>
+
+
+      <div class="testimonial-grid">
+
+        <div class="testimonial">
+
+          <div class="stars">★★★★★</div>
+
+          <p>
+            "The chocolate cake was absolutely incredible.
+            Everyone at the party asked where it came from!"
+          </p>
+
+          <div class="customer">— Maya R.</div>
+
+        </div>
+
+
+        <div class="testimonial">
+
+          <div class="stars">★★★★★</div>
+
+          <p>
+            "Their croissants are dangerous. I went in for one
+            and somehow left with a box of six."
+          </p>
+
+          <div class="customer">— Daniel K.</div>
+
+        </div>
+
+
+        <div class="testimonial">
+
+          <div class="stars">★★★★★</div>
+
+          <p>
+            "Beautiful cake, friendly service and everything
+            tasted homemade. Velvet Crumb is now my go-to."
+          </p>
+
+          <div class="customer">— Sarah T.</div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       CONTACT
+  ========================== -->
+
+  <section class="section contact" id="contact">
+
+    <div class="container">
+
+      <div class="contact-grid">
+
+        <div class="contact-info">
+
+          <div class="eyebrow">Come Say Hello</div>
+
+          <h2>
+            Let's make<br>
+            something sweet.
+          </h2>
+
+          <p>
+            Have a question, want a custom cake, or just want
+            to say hello? We'd love to hear from you.
+          </p>
+
+
+          <div class="contact-item">
+
+            <div class="contact-icon">📍</div>
+
+            <div>
+              <small>Visit us</small>
+              24 Blossom Street, Sweetville
+            </div>
+
+          </div>
+
+
+          <div class="contact-item">
+
+            <div class="contact-icon">📞</div>
+
+            <div>
+              <small>Call us</small>
+              <a href="tel:+1234567890">+1 234 567 890</a>
+            </div>
+
+          </div>
+
+
+          <div class="contact-item">
+
+            <div class="contact-icon">✉️</div>
+
+            <div>
+              <small>Email us</small>
+              <a href="mailto:hello@velvetcrumb.com">
+                hello@velvetcrumb.com
+              </a>
+            </div>
+
+          </div>
+
+
+          <div class="contact-item">
+
+            <div class="contact-icon">🕐</div>
+
+            <div>
+              <small>Opening hours</small>
+              Mon–Sat · 7:00 AM – 7:00 PM
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <form class="contact-form" id="contactForm">
+
+          <h3>Send us a message</h3>
+
+          <div class="form-group">
+
+            <label>Your Name</label>
+
+            <input
+              type="text"
+              id="name"
+              placeholder="Your name"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>Email</label>
+
+            <input
+              type="email"
+              id="email"
+              placeholder="you@example.com"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>What can we help with?</label>
+
+            <select id="topic">
+
+              <option>General enquiry</option>
+              <option>Custom cake</option>
+              <option>Catering</option>
+              <option>Order question</option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>Message</label>
+
+            <textarea
+              id="message"
+              placeholder="Tell us what you're looking for..."
+              required
+            ></textarea>
+
+          </div>
+
+
+          <button class="btn btn-primary" type="submit">
+            Send Message →
+          </button>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer>
+
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div>
+
+          <div class="footer-logo">
+            Velvet <span>Crumb.</span>
+          </div>
+
+          <p>
+            Handcrafted treats, freshly baked every day.
+            Made with love and a little bit of magic.
+          </p>
+
+        </div>
+
+
+        <div>
+
+          <h4>Explore</h4>
+
+          <ul class="footer-links">
+
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">Our Story</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+
+          </ul>
+
+        </div>
+
+
+        <div>
+
+          <h4>Follow Us</h4>
+
+          <ul class="footer-links">
+
+            <li>
+              <a href="https://instagram.com" target="_blank">
+                Instagram ↗
+              </a>
+            </li>
+
+            <li>
+              <a href="https://facebook.com" target="_blank">
+                Facebook ↗
+              </a>
+            </li>
+
+            <li>
+              <a href="https://tiktok.com" target="_blank">
+                TikTok ↗
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+
+      </div>
+
+
+      <div class="copyright">
+        © 2026 Velvet Crumb Bakery. Crafted with ♥.
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =========================
+       CART BUTTON
+  ========================== -->
+
+  <button class="cart-button" onclick="openCart()">
+
+    🛒
+
+    <span class="cart-count" id="cartCount">
+      0
+    </span>
+
+  </button>
+
+
+  <!-- =========================
+       ORDER MODAL
+  ========================== -->
+
+  <div class="modal" id="orderModal">
+
+    <div class="modal-box">
+
+      <button class="close-modal" onclick="closeModal('orderModal')">
+        ×
+      </button>
+
+      <h2>Place an Order 🍰</h2>
+
+      <p>
+        Tell us what you'd like and we'll get back to you.
+      </p>
+
+      <form id="orderForm">
+
+        <div class="form-group">
+
+          <label>Your Name</label>
+
+          <input
+            type="text"
+            placeholder="Your name"
+            required
+          >
+
+        </div>
+
+        <div class="form-group">
+
+          <label>Choose a treat</label>
+
+          <select required>
+
+            <option value="">Select something</option>
+            <option>Velvet Chocolate Cake</option>
+            <option>Strawberry Dream</option>
+            <option>Butter Croissant</option>
+            <option>Pink Cupcake</option>
+            <option>Country Sourdough</option>
+            <option>Macaron Box</option>
+
+          </select>
+
+        </div>
+
+        <div class="form-group">
+
+          <label>Quantity</label>
+
+          <input
+            type="number"
+            min="1"
+            value="1"
+            required
+          >
+
+        </div>
+
+        <div class="form-group">
+
+          <label>Pickup / delivery date</label>
+
+          <input
+            type="date"
+            required
+          >
+
+        </div>
+
+        <button class="btn btn-primary" type="submit">
+          Place Order →
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================
+       CART MODAL
+  ========================== -->
+
+  <div class="modal" id="cartModal">
+
+    <div class="modal-box">
+
+      <button class="close-modal" onclick="closeModal('cartModal')">
+        ×
+      </button>
+
+      <h2>Your Order 🛒</h2>
+
+      <p id="emptyCart">
+        Your basket is currently empty.
+      </p>
+
+      <div id="cartItems"></div>
+
+      <div
+        class="cart-total"
+        id="cartTotal"
+        style="display:none;"
+      >
+        <span>Total</span>
+        <span id="totalPrice">$0</span>
+      </div>
+
+      <button
+        class="btn btn-primary"
+        id="checkoutBtn"
+        style="display:none;"
+        onclick="checkout()"
+      >
+        Continue to Checkout →
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================
+       IMAGE MODAL
+  ========================== -->
+
+  <div class="modal" id="imageModal">
+
+    <div
+      class="modal-box"
+      style="padding:10px; background:transparent;"
+    >
+
+      <button
+        class="close-modal"
+        onclick="closeModal('imageModal')"
+        style="color:white;"
+      >
+        ×
+      </button>
+
+      <img
+        id="largeImage"
+        src=""
+        alt="Gallery image"
+        style="border-radius:15px;"
+      >
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================
+       TOAST
+  ========================== -->
+
+  <div class="toast" id="toast">
+    Added to your order!
+  </div>
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================== -->
+
+  <script>
+
+    /* =========================
+       MOBILE NAVIGATION
+    ========================== */
+
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
+    });
+
+
+    // Close mobile menu after clicking a link
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+      });
+
+    });
+
+
+    /* =========================
+       MENU FILTER
+    ========================== */
+
+    const filters = document.querySelectorAll(".filter");
+    const menuCards = document.querySelectorAll(".menu-card");
+
+    filters.forEach(filter => {
+
+      filter.addEventListener("click", () => {
+
+        filters.forEach(btn => {
+          btn.classList.remove("active");
+        });
+
+        filter.classList.add("active");
+
+        const category = filter.dataset.filter;
+
+        menuCards.forEach(card => {
+
+          if (
+            category === "all" ||
+            card.dataset.category === category
+          ) {
+
+            card.classList.remove("hidden");
+
+          } else {
+
+            card.classList.add("hidden");
+
+          }
+
+        });
+
+      });
+
+    });
+
+
+    /* =========================
+       CART SYSTEM
+    ========================== */
+
+    let cart = [];
+
+    function addToCart(name, price) {
+
+      const existing = cart.find(item => item.name === name);
+
+      if (existing) {
+
+        existing.quantity++;
+
+      } else {
+
+        cart.push({
+          name: name,
+          price: price,
+          quantity: 1
+        });
+
+      }
+
+      updateCart();
+
+      showToast(name + " added to your order!");
+
+    }
+
+
+    function updateCart() {
+
+      const cartCount = document.getElementById("cartCount");
+
+      const totalItems = cart.reduce(
+        (sum, item) => sum + item.quantity,
+        0
+      );
+
+      cartCount.textContent = totalItems;
+
+      renderCart();
+
+    }
+
+
+    function renderCart() {
+
+      const cartItems = document.getElementById("cartItems");
+      const emptyCart = document.getElementById("emptyCart");
+      const cartTotal = document.getElementById("cartTotal");
+      const checkoutBtn = document.getElementById("checkoutBtn");
+      const totalPrice = document.getElementById("totalPrice");
+
+      cartItems.innerHTML = "";
+
+      if (cart.length === 0) {
+
+        emptyCart.style.display = "block";
+        cartTotal.style.display = "none";
+        checkoutBtn.style.display = "none";
+
+        return;
+
+      }
+
+      emptyCart.style.display = "none";
+      cartTotal.style.display = "flex";
+      checkoutBtn.style.display = "inline-block";
+
+      let total = 0;
+
+      cart.forEach((item, index) => {
+
+        total += item.price * item.quantity;
+
+        const div = document.createElement("div");
+
+        div.className = "cart-item";
+
+        div.innerHTML = `
+          <div>
+            <strong>${item.name}</strong><br>
+            <small>
+              $${item.price} × ${item.quantity}
+            </small>
+          </div>
+
+          <button
+            onclick="removeFromCart(${index})"
+            style="
+              border:none;
+              background:none;
+              color:#b96568;
+              font-weight:bold;
+            "
+          >
+            Remove
+          </button>
+        `;
+
+        cartItems.appendChild(div);
+
+      });
+
+      totalPrice.textContent = "$" + total;
+
+    }
+
+
+    function removeFromCart(index) {
